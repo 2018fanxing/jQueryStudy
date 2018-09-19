@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-jQuery和js的入口函数区别</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /*window.onload=function (ev) {
+            //1.通过原生的JS入口函数可以拿到DOM元素。
+            var oImg=document.getElementsByTagName('img')[0];
+            console.log(oImg);
+            //2.通过原生的JS入口函数可以拿到DOM元素的宽和高。
+            var width=window.getComputedStyle(oImg).width;
+            console.log("onload",width);
+        }
+        */
+        /**
+         *原生的JS和jQuery的入口函数的加载模式不同，
+         * 原生的JS会等到DOM元素加载完毕，并且图片也加载完毕才会执行。
+         * jQuery在等到DOM元素加载完毕，但不会等待图片加载完毕。
+         */
+       /* $(document).ready(function () {
+            //1.通过原生的jQuery入口函数可以拿到DOM元素
+            var $img=$('img');
+            console.log($img);
+            //2.通过原生的jQuery入口函数不可以拿到DOM元素的宽和高
+            var $width=$img.width();
+            console.log("ready",$width);
+
+        })
+        */
+
+      /* window.onload=function (ev) {
+           alert("Hello 111");
+       }
+        window.onload=function (ev) {
+            alert("Hello 222");
+        }*/
+        /**
+         *1.原生的JS编写多个入口函数，后面的函数会覆盖前面的。
+         *2.jQuery编写的多个入口函数则会依次执行。
+         *
+          */
+
+        $(document).ready(function () {
+            alert("hello 111");
+        });
+        $(document).ready(function () {
+            alert("hello 222");
+        });
+    </script>
+</head>
+<body>
+<img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=717990840,2686814836&fm=173&app=25&f=JPEG?w=218&h=146&s=6944834733BBB2664A540CA90300E082">
+</body>
+</html>
