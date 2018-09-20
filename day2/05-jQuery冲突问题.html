@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-jQuery冲突问题</title>
+    <script src="../jquery-1.12.4.js"></script>
+    <script src="test.js"></script>
+    <script>
+        //释放$的使用权
+        /**
+         * 注意：释放操作必须在其他jQuery代码之前编写
+         *        释放之后不能再使用$，改为使用Jquery
+         *
+         * 2.或自定义一个符号如：
+         * var abc=jQuery.noConflict();
+         * 可用abc代替jQuery
+         */
+
+        //jQuery.noConflict();
+        var abc=jQuery.noConflict();
+        abc(function () {
+            alert('hello');
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
